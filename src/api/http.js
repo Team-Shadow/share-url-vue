@@ -26,7 +26,4 @@ function middleware(res) {
     return res
 }
 
-exports.get = get
-exports.post = post
-exports.del = del
-exports.put = put
+export {get, post, del, put}
