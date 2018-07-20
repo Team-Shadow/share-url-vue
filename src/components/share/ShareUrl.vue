@@ -3,7 +3,7 @@
         <form @submit="formSubmit">
             <label>
                 链接地址
-                <input type="url" required v-model="url">
+                <input type="url" required v-model="link">
             </label>
             <br>
             <label>
@@ -24,14 +24,24 @@
 export default {
     data() {
         return {
-            url: '',
-            title: '',
+            link: 'a:/1',
+            title: Math.random() + '',
             describe: ''
         }
     },
     methods: {
-        formSubmit() {
-            return false
+        formSubmit(e) {
+            e.preventDefault();
+            this.$API.sendUrl({
+                link: this.link,
+                title: this.title,
+                describe: this.describe
+            }).then(res => {
+                alert('分享成功')
+                this.link = ''
+                this.title = ''
+                this.describe = ''
+            })
         }
     }
 }

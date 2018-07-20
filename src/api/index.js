@@ -1,19 +1,13 @@
-import { get, post, del, put } from './http'
+import http from './http'
 const base = '/api'
 export default function () {
+    const { get, post, del, put } = http.call(this)
+
     const api = {
         user: params => get(`${base}/user`, params), // 获取当前登入用户
         logout: params => del(`${base}/user`, params), // 用户退出
-        // login: params => post(`${base}/user/login`, params), // 登入
-        // posts: params => get(`${base}/posts`, params), // 获取所有笔记
-        // postGet: params => get(`${base}/posts/${params.id}`, params), // 获取笔记
-        // postDel: params => del(`${base}/posts/${params.id}`, params), // 删除笔记
-        // postMod: params => put(`${base}/posts/${params.id}`, params), // 修改笔记
-        // postAdd: params => post(`${base}/posts`, params), // 增加笔记
-        // regist: params => post(`${base}/user`, params), // 注册
-        // getSite: params => get(`${base}/site`, params), // 获取站点信息
-        // setSite: params => post(`${base}/site`, params), // 配置站点信息
+        sendUrl: params => post(`${base}/url`, params), // 分享链接
     }
-
+    
     return api
 }

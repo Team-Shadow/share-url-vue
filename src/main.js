@@ -6,13 +6,17 @@ import router from './router'
 import api from './api'
 
 Vue.config.productionTip = false
+Vue.use(router)
 
-Vue.prototype.$API = api.call(new Vue()) // 全局配置api
-
-/* eslint-disable no-new */
-new Vue({
+let app = new Vue({
   el: '#app',
   router,
+  created() {
+    Vue.prototype.$API = api.call(this)
+  },
   components: { App },
   template: '<App/>'
 })
+
+
+/* eslint-disable no-new */
