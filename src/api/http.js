@@ -23,7 +23,7 @@ function middleware(res) {
     if (res.data.login) { // 登入提示
         location.href = '/login'
     }
-    return res
+    return res.data
 }
 
 export {get, post, del, put}
