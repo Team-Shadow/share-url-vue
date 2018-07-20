@@ -7,6 +7,7 @@ export default function () {
         user: params => get(`${base}/user`, params), // 获取当前登入用户
         logout: params => del(`${base}/user`, params), // 用户退出
         sendUrl: params => post(`${base}/url`, params), // 分享链接
+        searchUrl: params => get(`${base}/url`, params), // 搜索链接
     }
     
     return api
