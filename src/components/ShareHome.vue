@@ -7,6 +7,7 @@
             <div v-else>
                 {{user.name}}
                 <button @click="logoutBtn">退出登入</button>
+                <router-link :to="{name: 'ShareUrl'}">分享链接</router-link>
             </div>
         </div>
     </div>
@@ -21,7 +22,6 @@ export default {
     },
     created() {
         this.$API.user().then(({ data: user }) => {
-            // console.log(aa)
             this.user = user
         })
     },
