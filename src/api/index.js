@@ -8,7 +8,8 @@ export default function () {
         logout: params => del(`${base}/user`, params), // 用户退出
         sendUrl: params => post(`${base}/url`, params), // 分享链接
         searchUrl: params => get(`${base}/url`, params), // 搜索链接
+        urlDetail: id => get(`${base}/url/${id}`), // 链接详情 
     }
-    
+
     return api
 }

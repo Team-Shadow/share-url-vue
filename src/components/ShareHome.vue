@@ -14,7 +14,7 @@
             <h2>列表</h2>
             <ul>
                 <li v-for="item in itemList" :key="item._id">
-                    <router-link to="/">
+                    <router-link :to="{name: 'ShareDetail', params: {id: item._id}}">
                         {{item.title}}
                     </router-link>
                     -- {{item.author.name}}
@@ -50,7 +50,6 @@ export default {
                 page: this.page,
                 pageSize: this.pageSize
             }).then(res => {
-                console.log(res)
                 let temp = res.data || []
                 this.itemList = temp
             })
