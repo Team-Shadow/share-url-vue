@@ -8,6 +8,9 @@
                 </router-link>
             </li>
         </ul>
+        <div v-if="collection && collection.collection_url.length == 0" class="text-secondary">
+            暂无收藏的链接
+        </div>
     </div>
 </template>
 <script>

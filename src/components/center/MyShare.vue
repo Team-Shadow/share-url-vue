@@ -1,7 +1,7 @@
 <template>
     <div>
         我分享的
-        <div>
+        <div v-if=" itemList && itemList.length != 0">
             <h2>列表</h2>
             <ul>
                 <li v-for="item in itemList" :key="item._id">
@@ -15,6 +15,10 @@
             页码：{{page}}
             <button v-if="itemList.length == pageSize" @click="page++;initData()">下一页</button>
         </div>
+        <div v-else class="text-secondary">
+            暂无分享的链接，
+            <router-link :to="{name: 'ShareUrl'}">点击此处即可分享</router-link>
+        </div>
     </div>
 </template>
 
@@ -25,7 +29,7 @@ export default {
             user: null,
             page: 1,
             pageSize: 20,
-            itemList: []
+            itemList: null
         }
     },
     created () {
