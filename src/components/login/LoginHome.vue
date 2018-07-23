@@ -31,6 +31,7 @@ export default {
     methods: {
         // 注册
         registerBtn () {
+            if (!this.username || !this.password) return alert('请输入用户名、密码')
             this.$API.register({
                 username: this.username,
                 password: this.password
@@ -42,11 +43,13 @@ export default {
         },
         // 登入
         loginBtn () {
+            if (!this.username || !this.password) return alert('请输入用户名、密码')
             this.$API.login({
                 username: this.username,
                 password: this.password
             }).then(res => {
                 if (res.data) {
+                    sessionStorage.setItem('id', res.data._id)
                     this.$router.push('/')
                 }
             })

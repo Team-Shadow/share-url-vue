@@ -11,6 +11,8 @@ export default function () {
         urlDetail: id => get(`${base}/url/${id}`), // 链接详情 
         register: params => post(`${base}/register`, params), // 注册
         login: params => post(`${base}/login`, params), // 登入
+        addCollection: params => put(`${base}/collection`, params), // 收藏
+        collectionHas: params => get(`${base}/collectioned`, params), // 是否已收藏
     }
 
     return api
