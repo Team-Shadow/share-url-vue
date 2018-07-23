@@ -37,6 +37,7 @@ export default {
                 password: this.password
             }).then(res => {
                 if (res.data) {
+                    sessionStorage.setItem('id', res.data._id)
                     this.$router.push('/')
                 }
             })

@@ -40,6 +40,7 @@ export default {
     },
     created () {
         this.$API.user().then(({ data: user }) => {
+            sessionStorage.setItem('id', user._id)
             this.user = user
         })
         this.initData()
