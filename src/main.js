@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import api from './api'
+import store from './store'
 
 Vue.config.productionTip = false
 Vue.use(router)
@@ -19,6 +20,7 @@ router.beforeEach((to, from, next) => {
 let app = new Vue({
   el: '#app',
   router,
+  store,
   created() {
     Vue.prototype.$API = api.call(this)
   },
