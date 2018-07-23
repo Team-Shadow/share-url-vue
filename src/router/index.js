@@ -6,6 +6,7 @@ import ShareDetail from '@/components/share/ShareDetail'
 import CenterHome from '@/components/center/CenterHome'
 import MyShare from '@/components/center/MyShare'
 import MyCollection from '@/components/center/MyCollection'
+import LoginHome from '@/components/login/LoginHome'
 
 Vue.use(Router)
 
@@ -15,6 +16,11 @@ export default new Router({
       path: '/',
       name: 'ShareHome',
       component: ShareHome
+    },
+    {
+      path: '/login',
+      name: 'LoginHome',
+      component: LoginHome
     },
     {
       path: '/share',

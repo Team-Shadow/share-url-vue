@@ -9,6 +9,8 @@ export default function () {
         sendUrl: params => post(`${base}/url`, params), // 分享链接
         searchUrl: params => get(`${base}/url`, params), // 搜索链接
         urlDetail: id => get(`${base}/url/${id}`), // 链接详情 
+        register: params => post(`${base}/register`, params), // 注册
+        login: params => post(`${base}/login`, params), // 登入
     }
 
     return api
