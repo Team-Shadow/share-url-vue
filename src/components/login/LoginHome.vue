@@ -19,8 +19,7 @@
     </div>
 </template>
 <script>
-const CLIENT_ID = '274df6a3dc60b0dd834c' // github 登入所需要的客户端id
-
+const CLIENT_ID = process.env.CLIENT_ID // github 登入所需要的客户端id
 export default {
     data () {
         return {
