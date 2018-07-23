@@ -1,17 +1,6 @@
 <template>
     <div>
-        <div>
-            <div v-if="!user">
-                <button @click="githubLogin">github登入</button>
-            </div>
-            <div v-else>
-                {{user.name}}
-                <button @click="logoutBtn">退出登入</button>
-                <router-link :to="{name: 'ShareUrl'}">分享链接</router-link>
-                <router-link :to="{name: 'MyCollection'}">我收藏的</router-link>
-                <router-link :to="{name: 'MyShare'}">我分享的</router-link>
-            </div>
-        </div>
+        我分享的
         <div>
             <h2>列表</h2>
             <ul>
@@ -28,8 +17,8 @@
         </div>
     </div>
 </template>
+
 <script>
-const CLIENT_ID = '274df6a3dc60b0dd834c' // github 登入所需要的客户端id
 export default {
     data () {
         return {
@@ -42,30 +31,27 @@ export default {
     created () {
         this.$API.user().then(({ data: user }) => {
             this.user = user
+            if (!user) {
+                this.$router.push('/')
+            } else {
+                this.initData()
+            }
         })
-        this.initData()
     },
     methods: {
         // 初始化数据
         initData () {
             this.$API.searchUrl({
                 page: this.page,
-                pageSize: this.pageSize
+                pageSize: this.pageSize,
+                criteria: {
+                    author: this.user._id
+                }
             }).then(res => {
                 let temp = res.data || []
                 this.itemList = temp
             })
         },
-        // github 第三方登入
-        githubLogin () {
-            location.href = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}`
-        },
-        // 退出登入
-        logoutBtn () {
-            this.$API.logout().then(() => {
-                this.user = null
-            })
-        }
     }
 }
 </script>
