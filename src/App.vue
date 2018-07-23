@@ -10,6 +10,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="less">
+body {
+  a {
+    color: #333;
+  }
+}
 </style>
