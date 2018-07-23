@@ -8,6 +8,14 @@ import api from './api'
 Vue.config.productionTip = false
 Vue.use(router)
 
+router.beforeEach((to, from, next) => {
+  // 根据配置在router.meta 中 title值 配置标题
+  if (to.meta && to.meta.title) {
+    document.title = to.meta.title
+  }
+  next()
+})
+
 let app = new Vue({
   el: '#app',
   router,

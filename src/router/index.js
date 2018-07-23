@@ -15,22 +15,34 @@ export default new Router({
     {
       path: '/',
       name: 'ShareHome',
-      component: ShareHome
+      component: ShareHome,
+      meta: {
+        title: '首页'
+      }
     },
     {
       path: '/login',
       name: 'LoginHome',
-      component: LoginHome
+      component: LoginHome,
+      meta: {
+        title: '登入'
+      }
     },
     {
       path: '/share',
       name: 'ShareUrl',
-      component: ShareUrl
+      component: ShareUrl,
+      meta: {
+        title: '分享'
+      }
     },
     {
       path: '/detail/:id',
       name: 'ShareDetail',
-      component: ShareDetail
+      component: ShareDetail,
+      meta: {
+        title: '详情'
+      }
     },
     {
       path: '/center',
@@ -39,12 +51,18 @@ export default new Router({
         {
           path: 'share',
           name: 'MyShare',
-          component: MyShare
+          component: MyShare,
+          meta: {
+            title: '我分享的'
+          }
         },
         {
           path: 'collection',
           name: 'MyCollection',
-          component: MyCollection
+          component: MyCollection,
+          meta: {
+            title: '我收藏的'
+          }
         }
       ]
     }
